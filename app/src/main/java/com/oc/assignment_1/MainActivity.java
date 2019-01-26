@@ -35,9 +35,5 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
     }
 
-    public void about(View view)
-    {
-        Intent i = new Intent(getApplicationContext(),AboutActivity.class);
-        startActivity(i);
-    }
+   
 }
