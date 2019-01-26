@@ -1,4 +1,10 @@
 <resources>
-    <string name="app_name">Assignment_1</string>
+
     <string name="test">testing git hub commit/push - JD</string>
+    <string name="app_name">Tic-Tac Variants</string>
+    <string name="play_btn">Play Wild Tic-Tac-Toe</string>
+    <string name="play_btn2">Play Other Variant</string>
+    <string name="about_btn">About the app</string>
+    <string name="more_btn">More about the Variants</string>
+    <string name="welcome_txt">Welcome to Tic-Tac-Toe Variants!</string>
 </resources>
