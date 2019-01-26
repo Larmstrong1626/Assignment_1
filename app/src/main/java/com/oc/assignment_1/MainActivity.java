@@ -25,10 +25,18 @@ public class MainActivity extends Activity implements View.OnClickListener{
         setContentView(R.layout.activity_main);
         Button more_btn = findViewById(R.id.more_btn);
         more_btn.setOnClickListener(this);
+
         Button play_wild = findViewById(R.id.play_btn);
         play_wild.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 playWild();
+            }
+        });
+
+        Button play_not = findViewById(R.id.play_btn2);
+        play_not.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                playNot();
             }
         });
 
@@ -47,6 +55,12 @@ public class MainActivity extends Activity implements View.OnClickListener{
     public void playWild(){
         Intent intent = new Intent(getApplicationContext(),
                 PlayWildTicTacToe.class);
+        startActivity(intent);
+    }
+
+    public void playNot(){
+        Intent intent = new Intent(getApplicationContext(),
+                NotaktoActivity.class);
         startActivity(intent);
     }
 
