@@ -25,6 +25,13 @@ public class MainActivity extends Activity implements View.OnClickListener{
         setContentView(R.layout.activity_main);
         Button more_btn = findViewById(R.id.more_btn);
         more_btn.setOnClickListener(this);
+        Button play_wild = findViewById(R.id.play_btn);
+        play_wild.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                playWild();
+            }
+        });
+
 
     }
 
@@ -36,8 +43,13 @@ public class MainActivity extends Activity implements View.OnClickListener{
             startActivity(intent);
         }
 
-
     }
+    public void playWild(){
+        Intent intent = new Intent(getApplicationContext(),
+                PlayWildTicTacToe.class);
+        startActivity(intent);
+    }
+
     public void about(View view)
     {
         Intent i = new Intent(getApplicationContext(),AboutActivity.class);
