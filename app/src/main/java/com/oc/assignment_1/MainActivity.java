@@ -6,8 +6,7 @@
  5.1"x2.85"
  Marshmallow 6.0.1
  API 23
- Comment added
- another comment
+
  **************/
 package com.oc.assignment_1;
 
@@ -32,6 +31,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
             Intent intent = new Intent(Intent.ACTION_VIEW, my_link);
             startActivity(intent);
         }
+
+
     }
 
     public void about(View view)
