@@ -76,10 +76,30 @@ public class NotaktoActivity extends Activity {
                 if (b[x][y].isPressed()) {
                        b[x][y].setEnabled(false);
                        b[x][y].setBackgroundResource(R.drawable.x_key);
-
+                       choice[x][y] = 1;
                     }
                 }
+               if (OnesTurn == true) {
+                   OnesTurn = false;
+                   TwosTurn = true;
+                   my_turn.setText("Player 2 is up");
+                   //winner_id = checkWin();
+                  // if (winner_id == 2) {
+                     //  Toast.makeText(NotaktoActivity.this, "Order prevails, now back to the main menu", Toast.LENGTH_LONG).show();
 
+                       //back();
+                   //}
+               } else {
+                   OnesTurn = true;
+                   TwosTurn = false;
+                   my_turn.setText("Player 1 is up");
+                  // winner_id = checkWin();
+                  // if (winner_id == 2) {
+                    //   Toast.makeText(NotaktoActivity.this, "Order prevails, now back to the main menu", Toast.LENGTH_LONG).show();
+
+                      // back();
+                   //}
+               }
 
             }
 
