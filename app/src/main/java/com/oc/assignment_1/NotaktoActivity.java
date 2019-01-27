@@ -70,6 +70,7 @@ public class NotaktoActivity extends Activity {
         public void onClick(View v) {
             TextView my_turn = findViewById(R.id.my_turn);
             int winner_id;
+            TextView winner_text=findViewById(R.id.tv4);
 
            for (x = 0; x <= 2; x++) {
                 for (y = 0; y <= 2; y++) {
@@ -77,6 +78,7 @@ public class NotaktoActivity extends Activity {
                        b[x][y].setEnabled(false);
                        b[x][y].setBackgroundResource(R.drawable.x_key);
                        choice[x][y] = 1;
+
                     }
                 }
                if (OnesTurn == true) {
@@ -85,9 +87,13 @@ public class NotaktoActivity extends Activity {
                    my_turn.setText("Player 2 is up");
                    winner_id = checkWin();
                    if (winner_id == 1) {
-                       Toast.makeText(NotaktoActivity.this, "Player 2 Wins, now back to the main menu", Toast.LENGTH_LONG).show();
+                       winner_text.setText("Player Two Wins!");
+                       disappear();
+                       winner_text.setVisibility(View.VISIBLE);
+                       my_turn.setVisibility(View.INVISIBLE);
+                       //Toast.makeText(NotaktoActivity.this, "Player 2 Wins, now back to the main menu", Toast.LENGTH_LONG).show();
 
-                       back();
+                       //back();
                    }
                } else {
                    OnesTurn = true;
@@ -95,9 +101,13 @@ public class NotaktoActivity extends Activity {
                    my_turn.setText("Player 1 is up");
                    winner_id = checkWin();
                   if (winner_id == 1) {
-                      Toast.makeText(NotaktoActivity.this, "Player 1 Wins, now back to the main menu", Toast.LENGTH_LONG).show();
+                      winner_text.setText("Player One Wins!");
+                      disappear();
+                      winner_text.setVisibility(View.VISIBLE);
+                      my_turn.setVisibility(View.INVISIBLE);
+                      //Toast.makeText(NotaktoActivity.this, "Player 1 Wins, now back to the main menu", Toast.LENGTH_LONG).show();
 
-                       back();
+                       //back();
                    }
 
                }
@@ -136,8 +146,23 @@ public class NotaktoActivity extends Activity {
         return 0;
        }
 
+       public void disappear(){
+        int x=0;
+        int y=0;
+           for (x = 0; x <= 2; x++) {
+               for (y = 0; y <= 2; y++) {
 
-        public void back() {
+                       b[x][y].setVisibility(View.INVISIBLE);
+
+
+
+
+               }
+           }
+
+       }
+
+        public void main_menu() {
             count = 0;
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(i);
