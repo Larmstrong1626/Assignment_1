@@ -7,6 +7,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:background="#BB2601"
+        android:contentDescription="Page"
+        android:onClick="back"
+        android:text="Main "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/my_turn"
         android:layout_width="0dp"
@@ -123,6 +136,21 @@
             android:scaleType="fitXY"
             app:layout_constraintStart_toStartOf="@+id/six"
             app:layout_constraintTop_toTopOf="@+id/eight" />
+
+        <TextView
+            android:id="@+id/winner_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/eight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/two" />
 
 
     </android.support.constraint.ConstraintLayout>
