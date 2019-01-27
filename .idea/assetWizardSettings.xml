@@ -30,17 +30,13 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
+                                      <entry key="foregroundAssetType" value="CLIP_ART" />
                                       <entry key="foregroundImage" value="C:\Users\Luke\Desktop\4010_exapmles\OrderAndChaos\app\src\main\res\drawable\xkey.png" />
                                     </map>
                                   </option>
                                 </PersistentState>
                               </value>
                             </entry>
-                          </map>
-                        </option>
-                        <option name="values">
-                          <map>
-                            <entry key="outputIconType" value="ACTIONBAR" />
                           </map>
                         </option>
                       </PersistentState>
