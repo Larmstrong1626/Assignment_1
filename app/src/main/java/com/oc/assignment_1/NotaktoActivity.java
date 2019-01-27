@@ -83,22 +83,23 @@ public class NotaktoActivity extends Activity {
                    OnesTurn = false;
                    TwosTurn = true;
                    my_turn.setText("Player 2 is up");
-                   //winner_id = checkWin();
-                  // if (winner_id == 2) {
-                     //  Toast.makeText(NotaktoActivity.this, "Order prevails, now back to the main menu", Toast.LENGTH_LONG).show();
+                   winner_id = checkWin();
+                   if (winner_id == 1) {
+                       Toast.makeText(NotaktoActivity.this, "Player 2 Wins, now back to the main menu", Toast.LENGTH_LONG).show();
 
-                       //back();
-                   //}
+                       back();
+                   }
                } else {
                    OnesTurn = true;
                    TwosTurn = false;
                    my_turn.setText("Player 1 is up");
-                  // winner_id = checkWin();
-                  // if (winner_id == 2) {
-                    //   Toast.makeText(NotaktoActivity.this, "Order prevails, now back to the main menu", Toast.LENGTH_LONG).show();
+                   winner_id = checkWin();
+                  if (winner_id == 1) {
+                      Toast.makeText(NotaktoActivity.this, "Player 1 Wins, now back to the main menu", Toast.LENGTH_LONG).show();
 
-                      // back();
-                   //}
+                       back();
+                   }
+
                }
 
             }
@@ -106,6 +107,36 @@ public class NotaktoActivity extends Activity {
 
         }
     }
+
+
+
+       public int checkWin(){
+            int row=0;
+            int column=0;
+      //vertical check
+            for (column = 0; column < 3; column++) {
+               count = 0;
+               for (row = 0; row < 3; row++) {
+
+                   if (choice[row][column] == 1) {
+                       count++;
+
+                   } else {
+                       count = 0;
+
+                   }
+                   if (count == 3) {
+
+                       return 1;
+
+                   }
+               }
+           }
+
+        return 0;
+       }
+
+
         public void back() {
             count = 0;
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
