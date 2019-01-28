@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,7 +50,11 @@ public class NotaktoActivity extends Activity {
                 b[x][y].setOnClickListener(new MyListener(x, y));
             }
         }
+
+
     }
+
+
 
     public class MyListener implements View.OnClickListener {
 
@@ -159,7 +164,9 @@ public class NotaktoActivity extends Activity {
 
     }
 
-    public void main_menu() {
+
+
+    public void main_menu(View view) {
         count = 0;
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(i);
