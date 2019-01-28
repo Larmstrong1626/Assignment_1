@@ -31,7 +31,7 @@ public class NotaktoActivity extends Activity {
         b = new ImageButton[3][3];
 
 //row1
-        b[0][0] = (ImageButton)findViewById(R.id.one);
+        b[0][0] = (ImageButton) findViewById(R.id.one);
         b[0][1] = findViewById(R.id.two);
         b[0][2] = findViewById(R.id.three);
 //row2
@@ -70,47 +70,47 @@ public class NotaktoActivity extends Activity {
         public void onClick(View v) {
             TextView my_turn = findViewById(R.id.my_turn);
             int winner_id;
-            TextView winner_text=findViewById(R.id.tv4);
+            TextView winner_text = findViewById(R.id.tv4);
 
-           for (x = 0; x <= 2; x++) {
+            for (x = 0; x <= 2; x++) {
                 for (y = 0; y <= 2; y++) {
-                if (b[x][y].isPressed()) {
-                       b[x][y].setEnabled(false);
-                       b[x][y].setBackgroundResource(R.drawable.x_key);
-                       choice[x][y] = 1;
+                    if (b[x][y].isPressed()) {
+                        b[x][y].setEnabled(false);
+                        b[x][y].setBackgroundResource(R.drawable.x_key);
+                        choice[x][y] = 1;
 
                     }
                 }
-               if (OnesTurn == true) {
-                   OnesTurn = false;
-                   TwosTurn = true;
-                   my_turn.setText("Player 2 is up");
-                   winner_id = checkWin();
-                   if (winner_id == 1) {
-                       winner_text.setText("Player Two Wins!");
-                       disappear();
-                       winner_text.setVisibility(View.VISIBLE);
-                       my_turn.setVisibility(View.INVISIBLE);
-                       //Toast.makeText(NotaktoActivity.this, "Player 2 Wins, now back to the main menu", Toast.LENGTH_LONG).show();
+                if (OnesTurn == true) {
+                    OnesTurn = false;
+                    TwosTurn = true;
+                    my_turn.setText("Player 2 is up");
+                    winner_id = checkWin();
+                    if (winner_id == 1) {
+                        winner_text.setText("Player Two Wins!");
+                        disappear();
+                        winner_text.setVisibility(View.VISIBLE);
+                        my_turn.setVisibility(View.INVISIBLE);
+                        //Toast.makeText(NotaktoActivity.this, "Player 2 Wins, now back to the main menu", Toast.LENGTH_LONG).show();
 
-                       //back();
-                   }
-               } else {
-                   OnesTurn = true;
-                   TwosTurn = false;
-                   my_turn.setText("Player 1 is up");
-                   winner_id = checkWin();
-                  if (winner_id == 1) {
-                      winner_text.setText("Player One Wins!");
-                      disappear();
-                      winner_text.setVisibility(View.VISIBLE);
-                      my_turn.setVisibility(View.INVISIBLE);
-                      //Toast.makeText(NotaktoActivity.this, "Player 1 Wins, now back to the main menu", Toast.LENGTH_LONG).show();
+                        //back();
+                    }
+                } else {
+                    OnesTurn = true;
+                    TwosTurn = false;
+                    my_turn.setText("Player 1 is up");
+                    winner_id = checkWin();
+                    if (winner_id == 1) {
+                        winner_text.setText("Player One Wins!");
+                        disappear();
+                        winner_text.setVisibility(View.VISIBLE);
+                        my_turn.setVisibility(View.INVISIBLE);
+                        //Toast.makeText(NotaktoActivity.this, "Player 1 Wins, now back to the main menu", Toast.LENGTH_LONG).show();
 
-                       //back();
-                   }
+                        //back();
+                    }
 
-               }
+                }
 
             }
 
@@ -119,53 +119,53 @@ public class NotaktoActivity extends Activity {
     }
 
 
+    public int checkWin() {
+        int row = 0;
+        int column = 0;
+        //vertical check
+        for (column = 0; column < 3; column++) {
+            count = 0;
+            for (row = 0; row < 3; row++) {
 
-       public int checkWin(){
-            int row=0;
-            int column=0;
-      //vertical check
-            for (column = 0; column < 3; column++) {
-               count = 0;
-               for (row = 0; row < 3; row++) {
+                if (choice[row][column] == 1) {
+                    count++;
 
-                   if (choice[row][column] == 1) {
-                       count++;
+                } else {
+                    count = 0;
 
-                   } else {
-                       count = 0;
+                }
+                if (count == 3) {
 
-                   }
-                   if (count == 3) {
+                    return 1;
 
-                       return 1;
-
-                   }
-               }
-           }
+                }
+            }
+        }
 
         return 0;
-       }
+    }
 
-       public void disappear(){
-        int x=0;
-        int y=0;
-           for (x = 0; x <= 2; x++) {
-               for (y = 0; y <= 2; y++) {
+    public void disappear() {
+        int x = 0;
+        int y = 0;
+        for (x = 0; x <= 2; x++) {
+            for (y = 0; y <= 2; y++) {
 
-                       b[x][y].setVisibility(View.INVISIBLE);
-
-
+                b[x][y].setVisibility(View.INVISIBLE);
 
 
-               }
-           }
-
-       }
-
-        public void main_menu() {
-            count = 0;
-            Intent i = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(i);
+            }
         }
+
+    }
+
+    public void main_menu() {
+        count = 0;
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
+    }
+
+
+
     }
 
