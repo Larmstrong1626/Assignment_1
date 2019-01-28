@@ -3,6 +3,7 @@ package com.oc.assignment_1;
 import android.app.Activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -147,6 +148,55 @@ public class NotaktoActivity extends Activity {
             }
         }
 
+        //Horizontal check
+        for (row = 0; row < 3; row++) {
+            count = 0;
+            for (column = 0; column < 3; column++) {
+
+                if (choice[row][column] == 1) {
+                    count++;
+
+                } else {
+                    count = 0;
+
+                }
+                if (count == 3) {
+
+                    return 1;
+
+                }
+            }
+        }
+        //Diagonal Check
+        column=0;
+        count = 0;
+        for (row = 0; row < 3; row++) {
+            if (choice[row][column] == 1) {
+                count++;
+            } else {
+                count = 0;
+            }
+            if (count == 3) {
+                return 1;
+            }
+            column++;
+        }
+
+
+        // ReverseDiagonal Check
+        column=0;
+        count = 0;
+        for (row = 2; row >=0; row--) {
+            if (choice[row][column] == 1) {
+                count++;
+            } else {
+                count = 0;
+            }
+            if (count == 3) {
+                return 1;
+            }
+            column++;
+        }
         return 0;
     }
 
@@ -171,6 +221,9 @@ public class NotaktoActivity extends Activity {
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(i);
     }
+
+
+
 
 
 
