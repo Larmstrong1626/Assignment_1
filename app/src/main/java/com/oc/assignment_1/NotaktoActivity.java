@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,10 @@ public class NotaktoActivity extends Activity {
         int x, y;
         x = 0;
         y = 0;
+        ImageView image;
+
+        image = (ImageView) findViewById(R.id.one_Row);
+        image.setImageResource(R.drawable.imagename);
 
         b = new ImageButton[3][3];
 
