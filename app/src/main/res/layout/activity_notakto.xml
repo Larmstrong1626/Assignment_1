@@ -164,7 +164,7 @@
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/one_Row" />
+        app:srcCompat="@drawable/one_row" />
 
     <ImageView
         android:id="@+id/two_image"
@@ -175,6 +175,6 @@
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/two_Row" />
+        app:srcCompat="@drawable/two_row" />
 
 </android.support.constraint.ConstraintLayout>
