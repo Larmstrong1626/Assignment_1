@@ -22,6 +22,7 @@ public class NotaktoActivity extends Activity {
     int count = 0;
     ImageButton b[][];
     int[][] choice = new int[3][3];
+    ImageView one,two;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +31,13 @@ public class NotaktoActivity extends Activity {
         int x, y;
         x = 0;
         y = 0;
-        ImageView image;
 
-        image = (ImageView) findViewById(R.id.one_Row);
-        image.setImageResource(R.drawable.imagename);
+
+        one = findViewById(R.id.one_image);
+        one.setImageResource(R.drawable.one_Row);
+
+        two = findViewById(R.id.two_image);
+        two.setImageResource(R.drawable.two_Row);
 
         b = new ImageButton[3][3];
 
@@ -96,6 +100,8 @@ public class NotaktoActivity extends Activity {
                     OnesTurn = false;
                     TwosTurn = true;
                     my_turn.setText("Player 2 is up");
+                    two.setVisibility(View.VISIBLE);
+                    one.setVisibility(View.INVISIBLE);
                     winner_id = checkWin();
                     if (winner_id == 1) {
                         winner_text.setText("Player Two Wins!");
@@ -110,6 +116,8 @@ public class NotaktoActivity extends Activity {
                     OnesTurn = true;
                     TwosTurn = false;
                     my_turn.setText("Player 1 is up");
+                    one.setVisibility(View.VISIBLE);
+                    two.setVisibility(View.INVISIBLE);
                     winner_id = checkWin();
                     if (winner_id == 1) {
                         winner_text.setText("Player One Wins!");
