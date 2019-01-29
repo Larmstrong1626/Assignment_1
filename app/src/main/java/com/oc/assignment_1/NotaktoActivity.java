@@ -35,6 +35,7 @@ public class NotaktoActivity extends Activity {
 
         one = findViewById(R.id.one_image);
         one.setImageResource(R.drawable.one_row);
+        one.setVisibility(View.VISIBLE);
 
         two = findViewById(R.id.two_image);
         two.setImageResource(R.drawable.two_row);
