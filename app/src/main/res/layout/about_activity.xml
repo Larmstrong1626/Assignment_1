@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#062F4F"
+
     android:layout_height="match_parent">
 
     <TextView
@@ -17,7 +17,7 @@
         android:layout_marginTop="8dp"
         android:text="App developed by:"
         android:textSize="24dp"
-        android:textColor="#BB2601"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +31,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text=" Robert Armstrong/Justin Duff"
-        android:textColor="#BB2601"
+
         android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintStart_toStartOf="@+id/textView"
@@ -45,7 +45,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Tic-Tac Variants"
-        android:textColor="#BB2601"
+
         android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="@+id/textView2"
@@ -60,7 +60,7 @@
         android:contentDescription="Page"
         android:text="Main "
         android:onClick="back"
-        android:background="#BB2601"
+        android:background="#0d1dac"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

@@ -6,6 +6,6 @@
     <string name="play_btn2">Play Notakto Tic-Tac-Toe</string>
     <string name="about_btn">About the app</string>
     <string name="more_btn">More about the Variants</string>
-    <string name="welcome_txt">Welcome to Tic-Tac-Toe Variants!</string>
+    <string name="welcome_txt">Welcome to Tic-Tac Variants!</string>
     <string name="wild_Choosetxt">Choose to play X or O:</string>
 </resources>
