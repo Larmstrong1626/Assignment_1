@@ -152,6 +152,7 @@
         android:layout_marginStart="8dp"
         android:onClick="main_menu"
         android:text="Main"
+        android:background="#0d1dac"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
