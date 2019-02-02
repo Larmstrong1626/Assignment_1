@@ -2,6 +2,7 @@ package com.oc.assignment_1;
 
 import android.app.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +12,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class NotaktoActivity extends Activity {
 
@@ -24,10 +29,27 @@ public class NotaktoActivity extends Activity {
     int[][] choice = new int[3][3];
     ImageView one, two;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+        String restoredText = prefs.getString("text", null);
+
+        if (restoredText != null)
+        {
+            //Toast.makeText(NotaktoActivity.this, "It Worked", Toast.LENGTH_LONG).show();
+            OnesTurn=prefs.getBoolean("p_one",true);
+            TwosTurn=prefs.getBoolean("p_two",false);
+            Toast.makeText(NotaktoActivity.this, Boolean.toString(TwosTurn), Toast.LENGTH_LONG).show();
+
+        }
+
         setContentView(R.layout.activity_notakto);
+
+
+
         int x, y;
         x = 0;
         y = 0;
@@ -232,8 +254,27 @@ public class NotaktoActivity extends Activity {
         count = 0;
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(i);
-        
+
     }
+
+    protected void onStop () {
+        super.onStop();
+        SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
+        editor.putString("text", "worked");
+        editor.putBoolean("p_one",OnesTurn);
+        editor.putBoolean("p_two",TwosTurn);
+
+
+        editor.apply();
+    }
+
+
+
+
+
+
+
+
 
 
 
