@@ -232,9 +232,10 @@ public class NotaktoActivity extends Activity {
         count = 0;
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(i);
+        
     }
 
-    
+
 
     
 
