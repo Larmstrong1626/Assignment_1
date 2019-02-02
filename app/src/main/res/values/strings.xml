@@ -8,4 +8,6 @@
     <string name="more_btn">More about the Variants</string>
     <string name="welcome_txt">Welcome to Tic-Tac Variants!</string>
     <string name="wild_Choosetxt">Choose to play X or O:</string>
+    <string name="Player1">Player One"'"s Turn</string>
+    <string name="Player2">Player Two"'"s Turn</string>
 </resources>
