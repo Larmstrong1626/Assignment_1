@@ -22,7 +22,7 @@ public class NotaktoActivity extends Activity {
     int count = 0;
     ImageButton b[][];
     int[][] choice = new int[3][3];
-    ImageView one,two;
+    ImageView one, two;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,6 @@ public class NotaktoActivity extends Activity {
 
 
     }
-
 
 
     public class MyListener implements View.OnClickListener {
@@ -182,7 +181,7 @@ public class NotaktoActivity extends Activity {
             }
         }
         //Diagonal Check
-        column=0;
+        column = 0;
         count = 0;
         for (row = 0; row < 3; row++) {
             if (choice[row][column] == 1) {
@@ -198,9 +197,9 @@ public class NotaktoActivity extends Activity {
 
 
         // ReverseDiagonal Check
-        column=0;
+        column = 0;
         count = 0;
-        for (row = 2; row >=0; row--) {
+        for (row = 2; row >= 0; row--) {
             if (choice[row][column] == 1) {
                 count++;
             } else {
@@ -229,17 +228,14 @@ public class NotaktoActivity extends Activity {
     }
 
 
-
     public void main_menu(View view) {
         count = 0;
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(i);
     }
 
+    
 
 
-
-
-
-    }
+}
 
