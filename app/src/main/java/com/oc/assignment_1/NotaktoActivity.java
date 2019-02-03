@@ -320,7 +320,8 @@ public class NotaktoActivity extends Activity {
         recreate();
 
     }
-
+    
+    @Override
     protected void onStop() {
         super.onStop();
 
@@ -351,6 +352,9 @@ public class NotaktoActivity extends Activity {
 
 
     }
+
+
+
 
     public void refill() {
 
