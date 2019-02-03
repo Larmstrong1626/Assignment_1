@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -27,29 +29,50 @@ public class NotaktoActivity extends Activity {
     int count = 0;
     ImageButton b[][];
     int[][] choice = new int[3][3];
-    ImageView one, two;
 
+    ImageView one, two;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+        //SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String restoredText = prefs.getString("text", null);
 
-        if (restoredText != null)
-        {
-            //Toast.makeText(NotaktoActivity.this, "It Worked", Toast.LENGTH_LONG).show();
-            OnesTurn=prefs.getBoolean("p_one",true);
-            TwosTurn=prefs.getBoolean("p_two",false);
-            Toast.makeText(NotaktoActivity.this, Boolean.toString(TwosTurn), Toast.LENGTH_LONG).show();
-            if(OnesTurn){
+        setContentView(R.layout.activity_notakto);
+        one = findViewById(R.id.one_image);
+        one.setImageResource(R.drawable.one_row);
 
+
+        two = findViewById(R.id.two_image);
+        two.setImageResource(R.drawable.two_row);
+
+        if (restoredText != null) {
+
+            OnesTurn = prefs.getBoolean("p_one", true);
+            TwosTurn = prefs.getBoolean("p_two", false);
+            // Toast.makeText(NotaktoActivity.this, Boolean.toString(TwosTurn), Toast.LENGTH_LONG).show();
+            if (OnesTurn) {
+                TextView tv1 = findViewById(R.id.my_turn);
+                tv1.setText("Player 1 is up");
+                one.setVisibility(View.VISIBLE);
+                two.setVisibility(View.INVISIBLE);
             }
+            if (TwosTurn) {
+                TextView tv1 = findViewById(R.id.my_turn);
+                tv1.setText("Player 2 is up");
+                one.setVisibility(View.INVISIBLE);
+                two.setVisibility(View.VISIBLE);
+            }
+        } else {
+            TextView tv1 = findViewById(R.id.my_turn);
+            tv1.setText("Player 1 is up");
+            one.setVisibility(View.VISIBLE);
+
         }
 
-        setContentView(R.layout.activity_notakto);
-
+        //setContentView(R.layout.activity_notakto);
 
 
         int x, y;
@@ -57,12 +80,12 @@ public class NotaktoActivity extends Activity {
         y = 0;
 
 
-        one = findViewById(R.id.one_image);
-        one.setImageResource(R.drawable.one_row);
-        one.setVisibility(View.VISIBLE);
+        //   one = findViewById(R.id.one_image);
+        // one.setImageResource(R.drawable.one_row);
+        //one.setVisibility(View.VISIBLE);
 
-        two = findViewById(R.id.two_image);
-        two.setImageResource(R.drawable.two_row);
+        //two = findViewById(R.id.two_image);
+        //two.setImageResource(R.drawable.two_row);
 
         b = new ImageButton[3][3];
 
@@ -89,20 +112,13 @@ public class NotaktoActivity extends Activity {
 
     }
 
-
     public class MyListener implements View.OnClickListener {
-
-
         int x, y;
 
         //Class Constructor
         public MyListener(int x, int y) {
-
-
             this.x = x;
             this.y = y;
-
-
         }
 
         @Override
@@ -132,9 +148,6 @@ public class NotaktoActivity extends Activity {
                         disappear();
                         winner_text.setVisibility(View.VISIBLE);
                         my_turn.setVisibility(View.INVISIBLE);
-                        //Toast.makeText(NotaktoActivity.this, "Player 2 Wins, now back to the main menu", Toast.LENGTH_LONG).show();
-
-                        //back();
                     }
                 } else {
                     OnesTurn = true;
@@ -148,9 +161,7 @@ public class NotaktoActivity extends Activity {
                         disappear();
                         winner_text.setVisibility(View.VISIBLE);
                         my_turn.setVisibility(View.INVISIBLE);
-                        //Toast.makeText(NotaktoActivity.this, "Player 1 Wins, now back to the main menu", Toast.LENGTH_LONG).show();
 
-                        //back();
                     }
 
                 }
@@ -259,28 +270,39 @@ public class NotaktoActivity extends Activity {
 
     }
 
-    protected void onStop () {
+    public void newGame(View view) {
+        count = 0;
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        SharedPreferences.Editor editor = preferences.edit();
+        //editor.putString("text", mSaved.getText().toString());
+        //SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        //SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        editor.remove("p_one");
+        editor.remove("p_two");
+        editor.putString("text", null);
+        editor.apply();
+        OnesTurn = true;
+        TwosTurn = false;
+        recreate();
+
+    }
+
+    protected void onStop() {
         super.onStop();
-        SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
-        editor.putString("text", "worked");
-        editor.putBoolean("p_one",OnesTurn);
-        editor.putBoolean("p_two",TwosTurn);
+        //SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("text", "saved");
+        editor.putBoolean("p_one", OnesTurn);
+        editor.putBoolean("p_two", TwosTurn);
 
 
         editor.apply();
+
+
     }
-
-
-
-
-
-
-
-
-
-
-
-    
 
 
 }

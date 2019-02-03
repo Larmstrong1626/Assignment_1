@@ -178,4 +178,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/two_row" />
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="New Game"
+        android:onClick="newGame"
+        app:layout_constraintStart_toEndOf="@+id/button3"
+        app:layout_constraintTop_toTopOf="@+id/button3" />
+
 </android.support.constraint.ConstraintLayout>
