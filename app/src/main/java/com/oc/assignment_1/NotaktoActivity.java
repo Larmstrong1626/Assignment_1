@@ -22,11 +22,11 @@ import java.util.List;
 public class NotaktoActivity extends Activity {
 
 
-    int x,y,z=0;
+    int x, y, z = 0;
     boolean OnesTurn = true;
     boolean TwosTurn = false;
     int count = 0;
-    String myarr;
+    //String myarr;
     ImageButton b[][];
     int[][] choice = new int[3][3];
     int[] choice2 = new int[9];
@@ -40,7 +40,7 @@ public class NotaktoActivity extends Activity {
         //SharedPreferences prefs = getPreferences(MODE_PRIVATE);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String restoredText = prefs.getString("text", null);
-
+        String myvals = prefs.getString("values", null);
         setContentView(R.layout.activity_notakto);
         one = findViewById(R.id.one_image);
         one.setImageResource(R.drawable.one_row);
@@ -48,8 +48,62 @@ public class NotaktoActivity extends Activity {
 
         two = findViewById(R.id.two_image);
         two.setImageResource(R.drawable.two_row);
+        x = 0;
+        y = 0;
+
+
+        b = new ImageButton[3][3];
+
+//row1
+        b[0][0] = (ImageButton) findViewById(R.id.one);
+        b[0][1] = findViewById(R.id.two);
+        b[0][2] = findViewById(R.id.three);
+//row2
+        b[1][0] = findViewById(R.id.four);
+        b[1][1] = findViewById(R.id.five);
+        b[1][2] = findViewById(R.id.six);
+//row3
+        b[2][0] = findViewById(R.id.seven);
+        b[2][1] = findViewById(R.id.eight);
+        b[2][2] = findViewById(R.id.nine);
+
+        b[x][y].setOnClickListener(new MyListener(x, y));
+        for (x = 0; x <= 2; x++) {
+            for (y = 0; y <= 2; y++) {
+                b[x][y].setOnClickListener(new MyListener(x, y));
+            }
+        }
 
         if (restoredText != null) {
+            String arr = myvals;
+            String[] items = arr.replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+
+            int[] results = new int[9];
+
+            for (int i = 0; i < 9; i++) {
+                try {
+                    results[i] = Integer.parseInt(items[i]);
+                } catch (NumberFormatException nfe) {
+                    //NOTE: write something here if you need to recover from formatting errors
+                }
+            }
+            String len = Integer.toString(results.length);
+            Toast.makeText(NotaktoActivity.this, len, Toast.LENGTH_LONG).show();
+            choice[0][0] = results[0];
+            choice[0][1] = results[1];
+            choice[0][2] = results[2];
+            choice[1][0] = results[3];
+            choice[1][1] = results[4];
+            choice[1][2] = results[5];
+            choice[2][0] = results[6];
+            choice[2][1] = results[7];
+            choice[2][2] = results[8];
+            refill();
+
+            String test = Arrays.toString(results);
+
+            Toast.makeText(NotaktoActivity.this, test, Toast.LENGTH_LONG).show();
+
 
             OnesTurn = prefs.getBoolean("p_one", true);
             TwosTurn = prefs.getBoolean("p_two", false);
@@ -76,39 +130,7 @@ public class NotaktoActivity extends Activity {
         //setContentView(R.layout.activity_notakto);
 
 
-        int x, y;
-        x = 0;
-        y = 0;
-
-
-        //   one = findViewById(R.id.one_image);
-        // one.setImageResource(R.drawable.one_row);
-        //one.setVisibility(View.VISIBLE);
-
-        //two = findViewById(R.id.two_image);
-        //two.setImageResource(R.drawable.two_row);
-
-        b = new ImageButton[3][3];
-
-//row1
-        b[0][0] = (ImageButton) findViewById(R.id.one);
-        b[0][1] = findViewById(R.id.two);
-        b[0][2] = findViewById(R.id.three);
-//row2
-        b[1][0] = findViewById(R.id.four);
-        b[1][1] = findViewById(R.id.five);
-        b[1][2] = findViewById(R.id.six);
-//row3
-        b[2][0] = findViewById(R.id.seven);
-        b[2][1] = findViewById(R.id.eight);
-        b[2][2] = findViewById(R.id.nine);
-
-        b[x][y].setOnClickListener(new MyListener(x, y));
-        for (x = 0; x <= 2; x++) {
-            for (y = 0; y <= 2; y++) {
-                b[x][y].setOnClickListener(new MyListener(x, y));
-            }
-        }
+        // int x, y;
 
 
     }
@@ -276,15 +298,25 @@ public class NotaktoActivity extends Activity {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         SharedPreferences.Editor editor = preferences.edit();
-        //editor.putString("text", mSaved.getText().toString());
-        //SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        //SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         editor.remove("p_one");
         editor.remove("p_two");
         editor.putString("text", null);
+        editor.remove("values");
         editor.apply();
         OnesTurn = true;
         TwosTurn = false;
+        for (x = 0; x < 3; x++) {
+            for (y = 0; y < 3; y++) {
+
+                choice[x][y]=0;
+
+            }
+
+
+        }
+        for(x=0;x<9;x++){
+            choice2[x]=0;
+        }
         recreate();
 
     }
@@ -301,18 +333,18 @@ public class NotaktoActivity extends Activity {
         editor.putBoolean("p_one", OnesTurn);
         editor.putBoolean("p_two", TwosTurn);
 
-        for(x=0;x<3;x++){
-            for(y=0;y<3;y++){
+        for (x = 0; x < 3; x++) {
+            for (y = 0; y < 3; y++) {
 
-               choice2[z]=choice[x][y];
-               z++;
+                choice2[z] = choice[x][y];
+                z++;
             }
 
 
         }
-        myarr=Arrays.toString(choice2);
-        editor.putString("values",myarr);
-        Toast.makeText(NotaktoActivity.this, myarr, Toast.LENGTH_LONG).show();
+        String myarr = Arrays.toString(choice2);
+        editor.putString("values", myarr);
+        //Toast.makeText(NotaktoActivity.this, myarr, Toast.LENGTH_LONG).show();
 
 
         editor.apply();
@@ -320,6 +352,21 @@ public class NotaktoActivity extends Activity {
 
     }
 
+    public void refill() {
+
+        for (x = 0; x <= 2; x++) {
+            for (y = 0; y <= 2; y++) {
+                if (choice[x][y]==1) {
+                    b[x][y].callOnClick();
+                    b[x][y].setEnabled(false);
+                    b[x][y].setBackgroundResource(R.drawable.x_key);
+
+
+                }
+            }
+        }
+
+
+    }
 
 }
-
