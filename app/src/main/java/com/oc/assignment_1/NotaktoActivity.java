@@ -321,6 +321,7 @@ public class NotaktoActivity extends Activity {
 
     }
 
+    @Override
     protected void onStop() {
         super.onStop();
 
@@ -332,7 +333,7 @@ public class NotaktoActivity extends Activity {
         editor.putString("text", "saved");
         editor.putBoolean("p_one", OnesTurn);
         editor.putBoolean("p_two", TwosTurn);
-
+z=0;
         for (x = 0; x < 3; x++) {
             for (y = 0; y < 3; y++) {
 
@@ -351,6 +352,9 @@ public class NotaktoActivity extends Activity {
 
 
     }
+
+
+
 
     public void refill() {
 
