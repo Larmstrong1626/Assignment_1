@@ -344,7 +344,7 @@ public class NotaktoActivity extends Activity {
         }
         String myarr = Arrays.toString(choice2);
         editor.putString("values", myarr);
-        //Toast.makeText(NotaktoActivity.this, myarr, Toast.LENGTH_LONG).show();
+        Toast.makeText(NotaktoActivity.this, myarr, Toast.LENGTH_LONG).show();
 
 
         editor.apply();

@@ -167,6 +167,13 @@
         app:layout_constraintTop_toTopOf="@+id/guideline"
         app:layout_constraintVertical_bias="0.389">
 
+        <Button
+            android:id="@+id/newGame_TV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NewGame"
+            android:onClick="newGame1"/>
+
         <TextView
             android:id="@+id/wild_TV1"
             android:layout_width="match_parent"
