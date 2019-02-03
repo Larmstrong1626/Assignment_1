@@ -43,7 +43,9 @@ public class NotaktoActivity extends Activity {
             OnesTurn=prefs.getBoolean("p_one",true);
             TwosTurn=prefs.getBoolean("p_two",false);
             Toast.makeText(NotaktoActivity.this, Boolean.toString(TwosTurn), Toast.LENGTH_LONG).show();
+            if(OnesTurn){
 
+            }
         }
 
         setContentView(R.layout.activity_notakto);
