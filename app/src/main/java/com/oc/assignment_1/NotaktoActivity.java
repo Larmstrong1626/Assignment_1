@@ -21,14 +21,15 @@ import java.util.List;
 
 public class NotaktoActivity extends Activity {
 
-    boolean isOne = true;
-    boolean isTwo;
 
+    int x,y,z=0;
     boolean OnesTurn = true;
     boolean TwosTurn = false;
     int count = 0;
+    String myarr;
     ImageButton b[][];
     int[][] choice = new int[3][3];
+    int[] choice2 = new int[9];
 
     ImageView one, two;
 
@@ -290,6 +291,8 @@ public class NotaktoActivity extends Activity {
 
     protected void onStop() {
         super.onStop();
+
+
         //SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -297,6 +300,19 @@ public class NotaktoActivity extends Activity {
         editor.putString("text", "saved");
         editor.putBoolean("p_one", OnesTurn);
         editor.putBoolean("p_two", TwosTurn);
+
+        for(x=0;x<3;x++){
+            for(y=0;y<3;y++){
+
+               choice2[z]=choice[x][y];
+               z++;
+            }
+
+
+        }
+        myarr=Arrays.toString(choice2);
+        editor.putString("values",myarr);
+        Toast.makeText(NotaktoActivity.this, myarr, Toast.LENGTH_LONG).show();
 
 
         editor.apply();
