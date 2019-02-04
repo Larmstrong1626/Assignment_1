@@ -26,7 +26,7 @@ public class NotaktoActivity extends Activity {
     boolean OnesTurn = true;
     boolean TwosTurn = false;
     int count = 0;
-    //String myarr;
+
     ImageButton b[][];
     int[][] choice = new int[3][3];
     int[] choice2 = new int[9];
@@ -37,7 +37,7 @@ public class NotaktoActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String restoredText = prefs.getString("text", null);
         String myvals = prefs.getString("values", null);
@@ -84,11 +84,11 @@ public class NotaktoActivity extends Activity {
                 try {
                     results[i] = Integer.parseInt(items[i]);
                 } catch (NumberFormatException nfe) {
-                    //NOTE: write something here if you need to recover from formatting errors
+                    //
                 }
             }
-            String len = Integer.toString(results.length);
-            Toast.makeText(NotaktoActivity.this, len, Toast.LENGTH_LONG).show();
+            //String len = Integer.toString(results.length);
+           //Toast.makeText(NotaktoActivity.this, len, Toast.LENGTH_LONG).show();
             choice[0][0] = results[0];
             choice[0][1] = results[1];
             choice[0][2] = results[2];
@@ -100,9 +100,9 @@ public class NotaktoActivity extends Activity {
             choice[2][2] = results[8];
             refill();
 
-            String test = Arrays.toString(results);
+            //String test = Arrays.toString(results);
 
-            Toast.makeText(NotaktoActivity.this, test, Toast.LENGTH_LONG).show();
+            //Toast.makeText(NotaktoActivity.this, test, Toast.LENGTH_LONG).show();
 
 
             OnesTurn = prefs.getBoolean("p_one", true);
@@ -126,13 +126,6 @@ public class NotaktoActivity extends Activity {
             one.setVisibility(View.VISIBLE);
 
         }
-
-        //setContentView(R.layout.activity_notakto);
-
-
-        // int x, y;
-
-
     }
 
     public class MyListener implements View.OnClickListener {
@@ -345,7 +338,7 @@ z=0;
         }
         String myarr = Arrays.toString(choice2);
         editor.putString("values", myarr);
-        Toast.makeText(NotaktoActivity.this, myarr, Toast.LENGTH_LONG).show();
+        //Toast.makeText(NotaktoActivity.this, myarr, Toast.LENGTH_LONG).show();
 
 
         editor.apply();
