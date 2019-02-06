@@ -26,7 +26,7 @@ public class NotaktoActivity extends Activity {
     boolean OnesTurn = true;
     boolean TwosTurn = false;
     int count = 0;
-
+//arrays to hold button values 2d and 1d
     ImageButton b[][];
     int[][] choice = new int[3][3];
     int[] choice2 = new int[9];
@@ -36,22 +36,19 @@ public class NotaktoActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
+        //read in values stored in sharedpreferences
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String restoredText = prefs.getString("text", null);
         String myvals = prefs.getString("values", null);
         setContentView(R.layout.activity_notakto);
         one = findViewById(R.id.one_image);
         one.setImageResource(R.drawable.one_row);
-
-
         two = findViewById(R.id.two_image);
         two.setImageResource(R.drawable.two_row);
         x = 0;
         y = 0;
 
-
+//declare 2d array of image buttons and find the buttons
         b = new ImageButton[3][3];
 
 //row1
@@ -87,8 +84,7 @@ public class NotaktoActivity extends Activity {
                     //
                 }
             }
-            //String len = Integer.toString(results.length);
-            //Toast.makeText(NotaktoActivity.this, len, Toast.LENGTH_LONG).show();
+
             choice[0][0] = results[0];
             choice[0][1] = results[1];
             choice[0][2] = results[2];
@@ -100,13 +96,10 @@ public class NotaktoActivity extends Activity {
             choice[2][2] = results[8];
             refill();
 
-            
-
-
             OnesTurn = prefs.getBoolean("p_one", true);
             TwosTurn = prefs.getBoolean("p_two", false);
-            // Toast.makeText(NotaktoActivity.this, Boolean.toString(TwosTurn), Toast.LENGTH_LONG).show();
-            if (OnesTurn) {
+
+           if (OnesTurn) {
                 TextView tv1 = findViewById(R.id.my_turn);
                 tv1.setText("Player 1 is up");
                 one.setVisibility(View.VISIBLE);
@@ -186,7 +179,7 @@ public class NotaktoActivity extends Activity {
         }
     }
 
-
+//Check  for wins vertically,horizontally, and diagonally
     public int checkWin() {
         int row = 0;
         int column = 0;
@@ -261,7 +254,7 @@ public class NotaktoActivity extends Activity {
         }
         return 0;
     }
-
+//Removes playing board when a winner is declared
     public void disappear() {
         int x = 0;
         int y = 0;
@@ -276,14 +269,14 @@ public class NotaktoActivity extends Activity {
 
     }
 
-
+//method to return to main menu
     public void main_menu(View view) {
         count = 0;
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(i);
 
     }
-
+//method to return to main menu
     public void newGame(View view) {
         count = 0;
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
