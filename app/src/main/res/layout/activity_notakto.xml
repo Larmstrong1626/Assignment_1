@@ -152,6 +152,7 @@
         android:layout_marginStart="8dp"
         android:onClick="main_menu"
         android:text="Main"
+        android:textColor="@android:color/white"
         android:background="#0d1dac"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -184,6 +185,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="New Game"
+        android:textColor="@android:color/white"
+        android:background="#0d1dac"
         android:onClick="newGame1"
         app:layout_constraintStart_toEndOf="@+id/button3"
         app:layout_constraintTop_toTopOf="@+id/button3" />
