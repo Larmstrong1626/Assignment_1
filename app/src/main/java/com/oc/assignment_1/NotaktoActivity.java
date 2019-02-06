@@ -88,7 +88,7 @@ public class NotaktoActivity extends Activity {
                 }
             }
             //String len = Integer.toString(results.length);
-           //Toast.makeText(NotaktoActivity.this, len, Toast.LENGTH_LONG).show();
+            //Toast.makeText(NotaktoActivity.this, len, Toast.LENGTH_LONG).show();
             choice[0][0] = results[0];
             choice[0][1] = results[1];
             choice[0][2] = results[2];
@@ -100,9 +100,7 @@ public class NotaktoActivity extends Activity {
             choice[2][2] = results[8];
             refill();
 
-            //String test = Arrays.toString(results);
-
-            //Toast.makeText(NotaktoActivity.this, test, Toast.LENGTH_LONG).show();
+            
 
 
             OnesTurn = prefs.getBoolean("p_one", true);
@@ -301,32 +299,32 @@ public class NotaktoActivity extends Activity {
         for (x = 0; x < 3; x++) {
             for (y = 0; y < 3; y++) {
 
-                choice[x][y]=0;
+                choice[x][y] = 0;
 
             }
 
 
         }
-        for(x=0;x<9;x++){
-            choice2[x]=0;
+        for (x = 0; x < 9; x++) {
+            choice2[x] = 0;
         }
         recreate();
 
     }
 
+    //When onStop is called, store values in sharedpreferences
     @Override
     protected void onStop() {
         super.onStop();
 
 
-        //SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("text", "saved");
         editor.putBoolean("p_one", OnesTurn);
         editor.putBoolean("p_two", TwosTurn);
-z=0;
+        z = 0;
         for (x = 0; x < 3; x++) {
             for (y = 0; y < 3; y++) {
 
@@ -338,7 +336,6 @@ z=0;
         }
         String myarr = Arrays.toString(choice2);
         editor.putString("values", myarr);
-        //Toast.makeText(NotaktoActivity.this, myarr, Toast.LENGTH_LONG).show();
 
 
         editor.apply();
@@ -347,13 +344,12 @@ z=0;
     }
 
 
-
-
+    //refill buttons to match saved state
     public void refill() {
 
         for (x = 0; x <= 2; x++) {
             for (y = 0; y <= 2; y++) {
-                if (choice[x][y]==1) {
+                if (choice[x][y] == 1) {
                     b[x][y].callOnClick();
                     b[x][y].setEnabled(false);
                     b[x][y].setBackgroundResource(R.drawable.x_key);
