@@ -59,6 +59,7 @@
         android:layout_marginTop="8dp"
         android:contentDescription="Page"
         android:text="Main "
+        android:textColor="@android:color/white"
         android:onClick="back"
         android:background="#0d1dac"
         app:layout_constraintStart_toStartOf="parent"
