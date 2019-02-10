@@ -18,7 +18,10 @@
         </activity>
         <activity android:name=".AboutActivity" />
 
-        <activity android:name=".NotaktoActivity"></activity>
+        <activity android:name=".NotaktoActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
 
         <activity android:name=".PlayWildTicTacToe"/>
 
